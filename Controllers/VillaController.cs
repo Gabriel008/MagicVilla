@@ -4,6 +4,7 @@ using MagicVilla_API.Modelos.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MagicVilla_API.Controllers
 {
@@ -145,7 +146,7 @@ namespace MagicVilla_API.Controllers
             if (patchDto == null || id == 0)
             { return NotFound(); }
 
-            var villa = _db.Villas.FirstOrDefault(v => v.Id == id);
+            var villa = _db.Villas.AsNoTracking().FirstOrDefault(v => v.Id == id);
 
             VillaDto villaDto = new()
             {
