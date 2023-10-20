@@ -20,7 +20,6 @@ namespace MagicVilla_API.Repositorio
         {
             await dbSet.AddAsync(entidad);
             await Grabar();
-
         }
 
         public async Task Grabar()
@@ -35,7 +34,7 @@ namespace MagicVilla_API.Repositorio
             {
                 query = query.AsNoTracking();
             }
-            if(filtro != null)
+            if (filtro != null)
             {
                 query = query.Where(filtro);
             }
@@ -52,7 +51,7 @@ namespace MagicVilla_API.Repositorio
             return await query.ToListAsync();
         }
 
-        public async Task<T> Remover(T entidad)
+        public async Task Remover(T entidad)
         {
             dbSet.Remove(entidad);
             await Grabar();
